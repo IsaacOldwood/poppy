@@ -7,3 +7,28 @@
     margin-right: auto;
     text-align: center;
 }
+
+div.main {
+    max-width: 425px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+div.morning, div.evening {
+    max-width: 75%;
+    border: 1px black solid;
+    margin: 1em auto 1em auto;
+}
+
+h3 {
+    margin: 0.35em;
+}
+
+button.fed {
+    margin: 0em 0em 1em 0em;
+}
+
+footer {
+    margin-top: 5em;
+}

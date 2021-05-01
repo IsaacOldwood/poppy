@@ -64,22 +64,28 @@
 		</script>
 	</head>
 	<body>
-		<div class="centering-container">
-			<h1>Poppy</h1>
+		<div class="main">
+			<div class="centering-container">
+				<h1>Poppy</h1>
+			</div>
+			<div class="centering-container">
+				<h2>Has Poppy been fed?</h2>
+			</div>
+			<div class="centering-container morning">
+				<h3><u>Morning</u></h3>
+				<h4 id="fed-morn">Enable JS</h4>
+				<button class="fed" onclick="fed('morn', data)">I have fed her this morning</button>
+			</div>
+			<div class="centering-container evening">
+				<h3><u>Evening</u></h3>
+				<h4 id="fed-eve">Enable JS</h4>
+				<button class="fed" onclick="fed('eve', data)">I have fed her this evening</button>
+			</div>
 		</div>
-		<div class="centering-container">
-			<h2>Has Poppy been fed?</h2>
-		</div>
-		<div class="centering-container">
-			<h3><u>Morning</u></h3>
-			<h4 id="fed-morn">Enable JS</h4>
-			<button class="fed" onclick="fed('morn', data)">I have fed her this morning</button>
-		</div>
-		<div class="centering-container">
-			<h3><u>Evening</u></h3>
-			<h4 id="fed-eve">Enable JS</h4>
-			<button class="fed" onclick="fed('eve', data)">I have fed her this evening</button>
-		</div>
+		<footer class="centering-container">
+			<p>Want a page for your dog? Drop me an email and I will add your dog</p>
+			<a href="mailto:isaac.oldwood@gmail.com">isaac.oldwood@gmail.com</a>
+		</footer>
 		<script>
 			// Build up the page.
 			var fed_morn_element = document.getElementById('fed-morn');
@@ -87,7 +93,7 @@
 			fed_morn_element.innerHTML = 'Loading...';
 			fed_eve_element.innerHTML = 'Loading...';
 			var data;
-			getData();
+			//getData();
 		</script>
 	</body>
 </html>
