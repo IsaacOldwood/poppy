@@ -28,7 +28,9 @@
 						data = {
 					    'day': day,
 					    'fed-morn': false,
-						'fed-eve': false
+						'fed-eve': false,
+						'walked-morn': false,
+						'walked-eve': false
 						};
 
 						sendData(data);
@@ -51,6 +53,24 @@
 						fed_eve_element.innerHTML = 'No';
 						fed_eve_element.style.color = 'red';
 					}
+
+					if (data['walked-morn']) {
+						walked_morn_element.innerHTML = 'Yes';
+						walked_morn_element.style.color = 'green';
+					}
+					else {
+						walked_morn_element.innerHTML = 'No';
+						walked_morn_element.style.color = 'red';
+					}
+
+					if (data['fed-eve']) {
+						walked_eve_element.innerHTML = 'Yes';
+						walked_eve_element.style.color = 'green';
+					}
+					else {
+						walked_eve_element.innerHTML = 'No';
+						walked_eve_element.style.color = 'red';
+					}
 				});
 			}
 			function sendData(data) {
@@ -68,10 +88,27 @@
 				if (time == 'morn') {
 					data['fed-morn'] = true;
 					fed_morn_element.innerHTML = 'Yes';
+					fed_morn_element.style.color = 'green';
 				}
 				else if (time == 'eve') {
 					data['fed-eve'] = true;
 					fed_eve_element.innerHTML = 'Yes';
+					fed_eve_element.style.color = 'green';
+				}
+
+				sendData(data);
+			}
+
+			function walked(time, data) {
+				if (time == 'morn') {
+					data['walked-morn'] = true;
+					walked_morn_element.innerHTML = 'Yes';
+					walked_morn_element.style.color = 'green';
+				}
+				else if (time == 'eve') {
+					data['walked-eve'] = true;
+					walked_eve_element.innerHTML = 'Yes';
+					walked_eve_element.style.color = 'green';
 				}
 
 				sendData(data);
@@ -96,9 +133,22 @@
 				<h4 id="fed-eve">Enable JS</h4>
 				<button class="fed" onclick="fed('eve', data)">I have fed her this evening</button>
 			</div>
+			<div class="centering-container">
+				<h2>Has Poppy been walked?</h2>
+			</div>
+			<div class="centering-container morning">
+				<h3><u>Morning</u></h3>
+				<h4 id="walked-morn">Enable JS</h4>
+				<button class="walked" onclick="walked('morn', data)">I have walked her this morning</button>
+			</div>
+			<div class="centering-container evening">
+				<h3><u>Evening</u></h3>
+				<h4 id="walked-eve">Enable JS</h4>
+				<button class="walked" onclick="walked('eve', data)">I have walked her this evening</button>
+			</div>
 		</div>
 		<footer class="centering-container">
-			<p>Want a page for your dog or animal? Drop me an email!</p>
+			<p>Are you tired of not knowing if the dog has been fed or walked? Want a page for your dog or animal? Drop me an email!</p>
 			<a href="mailto:isaac.oldwood@gmail.com">isaac.oldwood@gmail.com</a>
 		</footer>
 		<script>
@@ -107,6 +157,10 @@
 			var fed_eve_element = document.getElementById('fed-eve');
 			fed_morn_element.innerHTML = 'Loading...';
 			fed_eve_element.innerHTML = 'Loading...';
+			var walked_morn_element = document.getElementById('walked-morn');
+			var walked_eve_element = document.getElementById('walked-eve');
+			walked_morn_element.innerHTML = 'Loading...';
+			walked_eve_element.innerHTML = 'Loading...';
 			var data;
 			getData();
 		</script>
