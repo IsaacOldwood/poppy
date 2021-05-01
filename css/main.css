@@ -36,3 +36,8 @@ button.fed, button.walked {
 footer {
     margin-top: 5em;
 }
+
+div.icon {
+    margin: 1em 0em;
+    font-size: 0.5em;
+}
