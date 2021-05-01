@@ -14,10 +14,45 @@
         <meta name = "description" content = "Keep track of if the dog has been fed and walked from anywhere." />
         <meta name = "revised" content = "IsaacOldwood, 01/05/2021" />
 		<meta name = "author" content = "Isaac Oldwood" />
+		<script>
+			function getData() {
+				fetch('https://api.jsonbin.io/b/608d34138a409667ca022215/latest')
+  				.then(response => response.json())
+  				.then(r => console.log(r));
+			}
+
+			function sendData(data) {
+				fetch('https://api.jsonbin.io/b/608d34138a409667ca022215', {
+				  method: 'PUT',
+				  headers: {
+				    'Content-Type': 'application/json',
+				  },
+				  body: JSON.stringify(data),
+				})
+				.then(r => console.log(r));
+			}
+		</script>
+		<script>
+			function fed() {
+				var d = new Date();
+				var day = d.getDay();
+
+				const data = {
+				    'day': day,
+				    'fed': true
+				};
+
+				sendData(data);
+			}
+		</script>
 	</head>
 	<body>
 		<div class="centering-container">
 			<h1>Poppy</h1>
+		</div>
+		<div class="centering-container">
+			<button onclick="getData()">Get</button>
+			<button onclick="fed()">Fed</button>
 		</div>
 	</body>
 </html>
