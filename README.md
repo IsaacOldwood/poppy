@@ -1,3 +1,5 @@
 # Poppy
 
-New site idea
+Proof of concept.
+
+https://poppythedog.netlify.app/

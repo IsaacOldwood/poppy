@@ -34,8 +34,23 @@
 						sendData(data);
 					}
 
-					fed_morn_element.innerHTML = data['fed-morn'] ? 'Yes' : 'No';
-					fed_eve_element.innerHTML = data['fed-eve'] ? 'Yes' : 'No';
+					if (data['fed-morn']) {
+						fed_morn_element.innerHTML = 'Yes';
+						fed_morn_element.style.color = 'green';
+					}
+					else {
+						fed_morn_element.innerHTML = 'No';
+						fed_morn_element.style.color = 'red';
+					}
+
+					if (data['fed-eve']) {
+						fed_eve_element.innerHTML = 'Yes';
+						fed_eve_element.style.color = 'green';
+					}
+					else {
+						fed_eve_element.innerHTML = 'No';
+						fed_eve_element.style.color = 'red';
+					}
 				});
 			}
 			function sendData(data) {
