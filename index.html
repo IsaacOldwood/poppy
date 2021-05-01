@@ -17,6 +17,27 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
 		<meta charset="UTF-8">
 		<script>
+			function getData() {
+				fetch('https://api.jsonbin.io/b/608d34138a409667ca022215/latest')
+  				.then(response => response.json())
+				.then(current_data => {
+					var d = new Date();
+					var day = d.getDay();
+					data = current_data;
+					if (data['day'] != day) {
+						data = {
+					    'day': day,
+					    'fed-morn': false,
+						'fed-eve': false
+						};
+
+						sendData(data);
+					}
+
+					fed_morn_element.innerHTML = data['fed-morn'] ? 'Yes' : 'No';
+					fed_eve_element.innerHTML = data['fed-eve'] ? 'Yes' : 'No';
+				});
+			}
 			function sendData(data) {
 				fetch('https://api.jsonbin.io/b/608d34138a409667ca022215', {
 				  method: 'PUT',
@@ -24,8 +45,7 @@
 				    'Content-Type': 'application/json',
 				  },
 				  body: JSON.stringify(data),
-				})
-				.then(r => console.log(r));
+				});
 			}
 		</script>
 		<script>
@@ -67,28 +87,7 @@
 			fed_morn_element.innerHTML = 'Loading...';
 			fed_eve_element.innerHTML = 'Loading...';
 			var data;
-			fetch('https://api.jsonbin.io/b/608d34138a409667ca022215/latest')
-  			.then(response => response.json())
-			.then(current_data => {
-				var d = new Date();
-				var day = d.getDay();
-				data = current_data;
-				if (data['day'] != day) {
-					data = {
-				    'day': day,
-				    'fed-morn': false,
-					'fed-eve': false
-					};
-
-					sendData(data);
-				}
-				else {
-					console.log(data);
-				}
-
-				fed_morn_element.innerHTML = data['fed-morn'] ? 'Yes' : 'No';
-				fed_eve_element.innerHTML = data['fed-eve'] ? 'Yes' : 'No';
-			})
+			getData();
 		</script>
 	</body>
 </html>
